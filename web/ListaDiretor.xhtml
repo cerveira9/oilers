@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Jogadores</title>
+    </h:head>
+    <h:body style="background-color: black">
+        <h:form>
+            <div id="img" align="center">
+                <p:commandLink id="imagemVOltar" action="index" ajax="false">
+                    <img src="img/rj_macae_oilers.png" width="150px" height="150px" />
+                </p:commandLink>
+            </div>         
+            <div id="listaJogadores" align="center">                
+                <p:dataTable value="#{guiDiretor.listaDiretor}" var="d" id="tbldiretor" emptyMessage="Nenhum diretor encontrado com estes termos" 
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                             paginator="true" rows="10" style="margin-bottom:20px">
+                    <p:column headerText="id" sortBy="#{d.id}" filterBy="#{d.id}" filterMatchMode="contains">
+                        <p:outputLabel value="#{d.id}" />
+                    </p:column>
+                    <p:column headerText="Nome" sortBy="#{d.nomeDoDiretor}" filterBy="#{d.nomeDoDiretor}" filterMatchMode="contains">
+                        <p:outputLabel value="#{d.nomeDoDiretor}" />
+                    </p:column>
+                    <p:column headerText="CPF" sortBy="#{d.cpfDoDiretor}" filterBy="#{d.cpfDoDiretor}" filterMatchMode="contains">
+                        <p:outputLabel value="#{d.cpfDoDiretor}" />
+                    </p:column>
+                    <p:column headerText="Endereço" sortBy="#{d.endereçoDoDiretor}" filterBy="#{d.endereçoDoDiretor}" filterMatchMode="contains">
+                        <p:outputLabel value="#{d.endereçoDoDiretor}" />
+                    </p:column>
+                    <p:column headerText="Telefone" sortBy="#{d.telefoneDoDiretor}" filterBy="#{d.telefoneDoDiretor}" filterMatchMode="contains">
+                        <p:outputLabel value="#{d.telefoneDoDiretor}" />
+                    </p:column>
+                    <p:column headerText="Data de Nascimento" sortBy="#{d.dataNascimentoDoDiretor}" filterBy="#{d.dataNascimentoDoDiretor}" filterMatchMode="contains">
+                        <p:outputLabel value="#{d.dataNascimentoDoDiretor}" />
+                    </p:column>
+                    <p:column headerText="Cargo" sortBy="#{d.cargo}" filterBy="#{d.cargo}" filterMatchMode="contains">
+                        <p:outputLabel value="#{d.cargo}" />
+                    </p:column>
+                    <p:column exportable="false">
+                        <p:commandButton value="Excluir" action="#{guiDiretor.excluir(d)}" ajax="true" update="tbldiretor" style="width: 90px; height: 30px" />
+                        <p:commandButton value="Alterar" action="#{guiDiretor.alterar(d)}" ajax="false" style="width: 90px; height: 30px" />
+                    </p:column>
+                </p:dataTable>
+                <p:commandButton value="Gerar Relatório" ajax="false">
+                    <p:dataExporter type="csv" target="tbldiretor" fileName="Diretores" />
+                </p:commandButton>
+                <p:commandButton value="Voltar" action="index" />
+            </div>
+        </h:form>
+    </h:body>
+</html>
+

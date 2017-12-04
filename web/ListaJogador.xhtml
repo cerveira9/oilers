@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Jogadores</title>
+    </h:head>
+    <h:body style="background-color: black">
+        <h:form>
+            <div id="img" align="center">
+                <p:commandLink id="imagemVOltar" action="index" ajax="false">
+                    <img src="img/rj_macae_oilers.png" width="150px" height="150px" />
+                </p:commandLink>
+            </div>         
+            <div id="listaJogadores" align="center">                
+                <p:dataTable value="#{guiJogador.listaJogador}" var="j" id="tbljogador" emptyMessage="Nenhum jogador encontrado com estes termos" 
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                             paginator="true" rows="10" style="margin-bottom:20px">
+                    <p:column headerText="id" sortBy="#{j.id}" filterBy="#{j.id}" filterMatchMode="contains">
+                        <p:outputLabel value="#{j.id}" />
+                    </p:column>
+                    <p:column headerText="Número" sortBy="#{j.numeroDoJogador}" filterBy="#{j.numeroDoJogador}" filterMatchMode="contains">
+                        <p:outputLabel value="#{j.numeroDoJogador}" />
+                    </p:column>
+                    <p:column headerText="Nome" sortBy="#{j.nomeDoJogador}" filterBy="#{j.nomeDoJogador}" filterMatchMode="contains">
+                        <p:outputLabel value="#{j.nomeDoJogador}" />
+                    </p:column>
+                    <p:column headerText="CPF" sortBy="#{j.cpfDoJogador}" filterBy="#{j.cpfDoJogador}" filterMatchMode="contains">
+                        <p:outputLabel value="#{j.cpfDoJogador}" />
+                    </p:column>
+                    <p:column headerText="Endereço" sortBy="#{j.endereçoDoJogador}" filterBy="#{j.endereçoDoJogador}" filterMatchMode="contains">
+                        <p:outputLabel value="#{j.endereçoDoJogador}" />
+                    </p:column>
+                    <p:column headerText="Telefone" sortBy="#{j.telefoneDoJogador}" filterBy="#{j.telefoneDoJogador}" filterMatchMode="contains">
+                        <p:outputLabel value="#{j.telefoneDoJogador}" />
+                    </p:column>
+                    <p:column headerText="Data de Nascimento" sortBy="#{j.dataNascimentoDoJogador}" filterBy="#{j.dataNascimentoDoJogador}" filterMatchMode="contains">
+                        <p:outputLabel value="#{j.dataNascimentoDoJogador}" />
+                    </p:column>
+                    <p:column headerText="Posição" sortBy="#{j.posicao}" filterBy="#{j.posicao}" filterMatchMode="contains">
+                        <p:outputLabel value="#{j.posicao}" />
+                    </p:column>
+                    <p:column headerText="Inscrito LiFFA" sortBy="#{j.inscritoLIFFA}" filterBy="#{j.inscritoLIFFA}" filterMatchMode="contains">
+                        <p:outputLabel value="#{j.inscritoLIFFA}" />
+                    </p:column>
+                    <p:column headerText="Inscrito LNFA" sortBy="#{j.inscritoLNFA}" filterBy="#{j.inscritoLNFA}" filterMatchMode="contains">
+                        <p:outputLabel value="#{j.inscritoLNFA}" />
+                    </p:column>
+                    <p:column exportable="false">
+                        <p:commandButton value="Excluir" action="#{guiJogador.excluir(j)}" ajax="true" update="tbljogador" style="width: 90px; height: 30px" />
+                        <p:commandButton value="Alterar" action="#{guiJogador.alterar(j)}" ajax="false" style="width: 90px; height: 30px" />
+                    </p:column>
+                </p:dataTable>
+                <p:commandButton value="Gerar Relatório" ajax="false">
+                    <p:dataExporter type="csv" target="tbljogador" fileName="Jogadores" />
+                </p:commandButton>
+                <p:commandButton value="Voltar" action="index" />
+            </div>
+        </h:form>
+    </h:body>
+</html>
+
