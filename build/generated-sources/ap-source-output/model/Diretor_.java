@@ -5,7 +5,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import model.Cargos;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-12-04T14:17:27")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-12-04T17:03:13")
 @StaticMetamodel(Diretor.class)
 public class Diretor_ { 
 
